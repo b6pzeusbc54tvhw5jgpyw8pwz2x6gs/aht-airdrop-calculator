@@ -1,6 +1,4 @@
-import { Main } from '@/component/main';
-import Image from 'next/image';
-import { useEffect } from 'react';
+import { Main } from '@/components/main';
 
 export default function Home() {
 
