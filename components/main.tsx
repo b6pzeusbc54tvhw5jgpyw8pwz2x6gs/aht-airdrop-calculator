@@ -51,7 +51,7 @@ const RightCell = (props: { children: React.ReactNode }) => {
 const Row = (props: { children: React.ReactNode }) => {
   return (
     <div
-      className="flex border-b-2"
+      className="flex border-b-2 border-gray-700"
     >
       {props.children}
     </div>
@@ -126,9 +126,9 @@ export const PerPriceType = (props: {
 export const Main = () => {
   const { price, error, loading } = useAHTPrice();
 
-  const [ ahtPrice, setAhtPrice ] = useState(0);
+  const [ ahtPrice, setAhtPrice ] = useState('0');
   useEffect(() => {
-    setAhtPrice(price);
+    setAhtPrice(String(price));
   }, [price])
   
   if (loading) {
@@ -142,7 +142,7 @@ export const Main = () => {
         <input
           className='w-20 bg-slate-600 text-right pr-1 mr-1 ml-1'
           value={ahtPrice}
-          onChange={(e) => setAhtPrice(Number(e.target.value))}
+          onChange={(e) => setAhtPrice(e.target.value)}
         />원
       </div>
       {loading && <div>로딩중...</div>}
@@ -152,7 +152,7 @@ export const Main = () => {
         type="Basic"
         initMonthlyReward={1800}
         initSubscriptionFee={5000}
-        ahtPrice={ahtPrice}
+        ahtPrice={Number(ahtPrice)}
       />
 
       <div className='h-16'></div>
@@ -160,7 +160,7 @@ export const Main = () => {
         type="Premium"
         initMonthlyReward={4000}
         initSubscriptionFee={12000}
-        ahtPrice={ahtPrice}
+        ahtPrice={Number(ahtPrice)}
       />
 
       <div className='h-16'></div>
